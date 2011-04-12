@@ -77,6 +77,10 @@ Ext.define('app.views.ContactListGridPanel', {
 
                 handler: function() {
                     console.log(me.getSelectionModel().selected.items[0]);
+                    if (!me.getSelectionModel().selected.items[0]) {
+                        Ext.MessageBox.alert('確認', '編集する行を選択してください');
+                        return;
+                    }
                     Ext.dispatch({
                         controller: app.controllers.contacts,
                         action: 'edit',
@@ -92,6 +96,10 @@ Ext.define('app.views.ContactListGridPanel', {
                 iconCls: 'silk-delete',
 
                 handler: function() {
+                    if (!me.getSelectionModel().selected.items[0]) {
+                        Ext.MessageBox.alert('確認', '削除する行を選択してください');
+                        return;
+                    }
                     Ext.MessageBox.confirm("確認", "本当に削除しますか?", function(btn) {
                         if (btn == "yes") {
                             //app.views.contactsListGridPanel.store.remove(me.getSelectionModel().selected.items);
