@@ -2,8 +2,9 @@ app.controllers.contacts = new Ext.Controller({
    index: function() {
         console.log("contacts controller #index")
         if (!app.views.viewport) {
-            app.views.viewport = new app.views.Viewport();
+            app.views.viewport = Ext.create('app.views.Viewport');
         } else {
+            app.fireEvent('loadcontactslist');
             app.views.viewport.layout.setActiveItem(0);
         }
     },
@@ -22,8 +23,7 @@ app.controllers.contacts = new Ext.Controller({
         console.log("contacts controller #edit")
         console.log("_docId: "+ params._docId)
 
-        app.views.viewport.fireEvent('loadcontact', params._docId);
-
+        app.fireEvent('loadcontact', params._docId);
         app.views.viewport.layout.setActiveItem(2);
     }
 });

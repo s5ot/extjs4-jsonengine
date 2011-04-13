@@ -8,6 +8,8 @@ Ext.regApplication({
 
     launch: function() {
         console.log('launch')
+        app.addEvents('loadcontactslist');
+        app.addEvents('loadcontact');
     }
 });
 

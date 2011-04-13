@@ -1,6 +1,8 @@
 Ext.define('app.views.ContactFormPanel', {
     extend: 'Ext.form.FormPanel',
 
+    alias: 'widget.contactformpanel',
+
     title: '連絡先',
 
     width: 400,
@@ -95,7 +97,6 @@ Ext.define('app.views.ContactFormPanel', {
 
     afterSuccess: function() {
         this.getForm().reset();
-        app.views.contactsListGridPanel.store.load();
         Ext.dispatch({
             controller: app.controllers.contacts,
             action: 'index'

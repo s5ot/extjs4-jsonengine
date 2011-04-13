@@ -1,6 +1,8 @@
 Ext.define('app.views.ContactDetail', {
     extend: 'Ext.Panel',
 
+    alias: 'widget.contactdetail',
+
     layout: 'border',
 
     defaults: {
@@ -25,7 +27,7 @@ Ext.define('app.views.ContactDetail', {
             },
             {
                 region: 'center',
-                items: new Ext.form.FormPanel({
+                items: Ext.create('Ext.form.FormPanel', {
                     title: '連絡先',
 
                     width: 400,

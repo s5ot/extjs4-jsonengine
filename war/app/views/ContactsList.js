@@ -2,6 +2,8 @@ Ext.define('app.views.ContactsList', {
 
     extend: 'Ext.Panel',
 
+    alias: 'widget.contactslist',
+
     layout: 'border',
 
     defaults: {
@@ -10,10 +12,6 @@ Ext.define('app.views.ContactsList', {
 
     initComponent: function() {
         var me = this;
-
-        Ext.apply(app.views, {
-            contactsListGridPanel: new app.views.ContactListGridPanel()
-        });
 
         Ext.apply(me, {
             items: [{
@@ -31,7 +29,7 @@ Ext.define('app.views.ContactsList', {
             {
                 region: 'center',
                 items: [
-                    app.views.contactsListGridPanel
+                    {xtype: 'contactslistgridpanel'}
                 ]
             }]
             
