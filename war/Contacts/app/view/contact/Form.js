@@ -1,62 +1,70 @@
 Ext.define('Contacts.view.contact.Form', {
-
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
 
     alias: 'widget.contactform',
 
-    layout: 'border',
+    title: '連絡先',
 
-    defaults: {
-        border: false
-    },
+    url: '/_je/myDoc',
+
+    width: 400,
+
+    height: 300,
 
     initComponent: function() {
         var me = this;
 
         Ext.apply(me, {
+
+            fieldDefaults: {
+                padding: '10 0 0 5',
+                labelWidth: 100,
+                anchor: '100%'
+            },
+
             items: [{
-                region: 'north',
-                height: 50
+                fieldLabel: '名字',
+                xtype: 'textfield',
+                name: 'familyName'
             },
             {
-                region: 'west',
-                width: 200
+                fieldLabel: '名前',
+                xtype: 'textfield',
+                name: 'givenName'
             },
             {
-                region: 'south',
-                height: 200
+                fieldLabel: '電話番号',
+                xtype: 'textfield',
+                name: 'phoneNumbers'
             },
             {
-                region: 'center',
-                items: [
-                    {xtype: 'contactformpanel'}
-                ]
+                fieldLabel: 'email',
+                xtype: 'textfield',
+                name: 'emails'
+            },
+            {
+                xtype: 'hidden',
+                name: '_docId',
+                value: ''
+            }],
+
+            buttons: [{
+                text: '保存',
+
+                action: 'save'
+            },
+            {
+                text: 'クリア',
+
+                action: 'clear'
+            },
+            {
+                text: '戻る',
+
+                action: 'back'
             }]
         });
 
         this.callParent(arguments);
-    },
-
-    onLoadContact: function(_docId) {
-        var form = this.items.items[3].items.items[0].getForm();
-
-        form.load({
-            url: '/_je/myDoc/'+_docId,
-
-            success: function() {
-                console.log('success');
-            },
-
-            failure: function(form, action) {
-                if (action.failureType === Ext.form.action.Action.LOAD_FAILURE) {
-                    //LOAD_FAILUREはJSONレスポンスにsuccessプロパティがないエラーなのでOKとする。
-                    form.setValues(action.result);
-                    form.url = '/_je/myDoc'+_docId+'?_method=put'
-                } else {
-                    console.log('failure');
-                    console.log(action);
-                }
-            }
-        });
     }
 });

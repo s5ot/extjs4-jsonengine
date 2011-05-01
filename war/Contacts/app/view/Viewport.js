@@ -8,17 +8,6 @@ Ext.define('Contacts.view.Viewport', {
     initComponent: function() {
         var me = this;
 
-        /*
-        Ext.apply(me, {
-            items: [
-                {xtype: 'contactslist'},
-                {xtype: 'contactdetail'},
-                {xtype: 'contactform'}
-            ]
-        });
-        */
-
         this.callParent(arguments);
-    },
-
+    }
 });

@@ -9,12 +9,13 @@ Ext.application({
 
     launch: function() {
         Ext.create('Ext.container.Viewport', {
+
             layout: 'card',
 
             items: [
                 { xtype: 'contactlist' },
-                { xtype: 'contactdetail' },
-                { xtype: 'contactform' }
+                { xtype: 'contactnew' },
+                { xtype: 'contactedit' }
             ]
         });
     }

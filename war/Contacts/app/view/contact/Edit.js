@@ -1,7 +1,7 @@
-Ext.define('Contacts.view.contact.List', {
+Ext.define('Contacts.view.contact.Edit', {
     extend: 'Ext.Panel',
 
-    alias: 'widget.contactlist',
+    alias: 'widget.contactedit',
 
     layout: 'border',
 
@@ -29,10 +29,9 @@ Ext.define('Contacts.view.contact.List', {
                 region: 'center',
 
                 items: [
-                    {xtype: 'contactgrid'}
+                    {xtype: 'contactform'}
                 ]
             }]
-            
         });
 
         this.callParent(arguments);
