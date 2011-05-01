@@ -1,4 +1,4 @@
-ExtJS4 beta2とjsonengineを組み合わせたサンプルアプリ
+Ext JS 4.0.0とjsonengineを組み合わせたサンプルアプリ
 
 【起動】
-#<appengine-java-sdk-dir>/bin/dev_appserver.sh <this-project-dir>/war
+#<appengine-java-sdk-dir>/bin/dev_appserver.sh extjs4-jsonengine/war
