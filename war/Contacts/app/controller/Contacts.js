@@ -24,6 +24,13 @@ Ext.define('Contacts.controller.Contacts', {
         'Contact'
     ],
 
+    refs: [
+        {
+            ref: 'viewport',
+            selector: 'viewport'
+        }
+    ],
+
     init: function() {
         this.control({
             'contactgrid > toolbar > button[action=new]': {
@@ -104,10 +111,32 @@ Ext.define('Contacts.controller.Contacts', {
                     var form = button.up('contactform').getForm();
 
                     var values = form.getValues();
-
                     if (values._docId === '') {
+                        console.log('hoba');
                         delete values._docId;
                     }
+
+                    /*
+                    var contact = Ext.ModelManager.create(values, 'Contacts.model.Contact');
+                    var viewport = button.up('viewport');
+                    contact.save({
+                        success: function(contact) {
+                            viewport.down('contactgrid').getStore().load();
+                            viewport.getLayout().setActiveItem(0); 
+                        },
+
+                        failure: function(contact) {
+                            if (action.failureType === Ext.form.action.Action.SERVER_INVALID) {
+                                //SERVER_INVALIDはJSONレスポンスにsuccessプロパティがないエラーなのでOKとする。
+                                console.log(action);
+                                me.afterSuccess();
+                            } else {
+                                console.log('FAILURE!!!');
+                                console.log(action);
+                            }
+                        }
+                    });
+                    */
 
                     Ext.Ajax.request({
                         url: '/_je/myDoc',
